@@ -193,8 +193,7 @@ def compute_clifford_nr_for_circuits(circ_dir, num_circs, device_name,
 
     noise_metric_scores = []
     
-    #for i in range(circ_index_offset, circ_index_offset + num_circs):
-    for i in [18,19]:
+    for i in range(circ_index_offset, circ_index_offset + num_circs):
         curr_circ_dir = os.path.join(circ_dir, f'circ_{i + 1}')
         
         noise_metric_scores.append(

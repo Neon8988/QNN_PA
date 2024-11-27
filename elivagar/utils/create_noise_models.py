@@ -128,11 +128,6 @@ def noisy_dev_from_backend(backend_name, num_qubits):
     """
     Create a pennylane device that uses a noise model based on the backend with the name passed in.
     """
-    # try:
-    #     provider = IBMQ.enable_account(
-    #         'f9be8ebe6cc0b5c9970ca5ae86acad18c1dfb3844ed12b381a458536fcbf46499d62dbb33da9a07627774441860c64ac44e76a6f27dc6f09bba7e0f2ce68e9ff')
-    # except:
-    #     provider = IBMQ.load_account()
     
     service = QiskitRuntimeService()
     backend = service.backend(backend_name)
@@ -143,30 +138,9 @@ def noisy_dev_from_backend(backend_name, num_qubits):
     return dev
 
 
-# def get_real_backend_dev(backend_name, num_qubits):
-#     """
-#     Get the real IBMQ backend with the backend name passed in.
-#     """
-#     # try:
-#     #     provider = IBMQ.enable_account(
-#     #         'f9be8ebe6cc0b5c9970ca5ae86acad18c1dfb3844ed12b381a458536fcbf46499d62dbb33da9a07627774441860c64ac44e76a6f27dc6f09bba7e0f2ce68e9ff')
-#     # except:
-#     #     provider = IBMQ.load_account()
-#     service = QiskitRuntimeService() 
-#     dev = qml.device('qiskit.ibmq', wires=num_qubits, backend=backend_name, provider=service)
-    
-#     return dev
-
-
 def get_noise_model(device_name):
-    # try:
-    #     provider = IBMQ.enable_account(
-    #         'f9be8ebe6cc0b5c9970ca5ae86acad18c1dfb3844ed12b381a458536fcbf46499d62dbb33da9a07627774441860c64ac44e76a6f27dc6f09bba7e0f2ce68e9ff')
-    # except:
-    #     provider = IBMQ.load_account()
     service = QiskitRuntimeService()
     backend = service.backend(device_name)
-    #backend = provider.get_backend()
     noise_model = NoiseModel.from_backend(backend)
     config = backend.configuration().to_dict()
     
